@@ -1,0 +1,1496 @@
+@import url('../css/fonts.css');
+@import url('../css/reset.css');
+
+
+#wrap {
+    width:100%;
+    overflow: hidden;
+    #header {
+        z-index: 3;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width:100%;height: 86px;background: rgb(147,228,207);
+        transition: all 0.6s ease-in;
+        &.on{  // 가상 클래스
+            transition: all 0.8s ease-out;
+           transform: translateY(-86px);
+        }
+        .container {
+            width:100%;
+            max-width:1170px;
+            height:100%;
+            margin: 0 auto;
+            .gap {
+                margin: 0 15px 0 15px;height: 100%;
+                display: flex;
+                .left {
+                    width: 435.5px;height: 100%;display: flex;align-items: center;justify-content: flex-end;
+                    a {
+                        font-size: 14px;font-weight: 600;color:rgb(46,68,63);text-decoration: none;margin: 0 0 0 25px;
+                        &:hover ,
+                        &:focus {color:rgb(225,82,118);}
+                        &:nth-child(3) {margin-right: 30px; /* 마진수정 */}
+                    }                    
+                }
+                .center {
+                    width: 269px;height: 100%;
+                    a {
+                        width: 100%;height: 100%;display: inline-block;
+                        img {
+                            width: 100%;
+                            height: 86px;
+                            &:nth-child(1){
+                                display: block;
+                            }
+                            &:nth-child(2){
+                                display: none;
+                            }
+                        }
+                    }
+                }
+                .right {
+                    width: 435.5px;height: 100%;display: flex;align-items: center;
+                    a {
+                        font-size: 14px;font-weight: 600;color:rgb(46,68,63);text-decoration: none;margin: 0 25px 0 0;
+                        &:hover ,
+                        &:focus {color:rgb(225,82,118);}
+                        &:nth-child(1) {margin-left: 30px; /* 마진수정 */}
+                    }
+
+                }
+                #mobileMenu{
+                    width: 44px;
+                    height: 34px;
+                    margin: auto 0 auto auto;
+                    display: none;
+                    a {
+                        width: 22px;
+                        height: 14px;
+                        display: block;
+                        margin: auto;
+                        position: relative;
+                        i {
+                            display: block;
+                            width: 100%;
+                            height: 2px;
+                            position: absolute;
+                            background: #000;
+                            left: 0;
+                            &.line1 {top: 0}
+                            &.line2 {top: 50%;margin-top:-1px}
+                            &.line3 {bottom: 0}
+                        }
+                    }
+                }
+                #mobileSubMenu {
+                    display: none;
+                    width:100%;
+                    position: fixed;
+                    top: 86px;
+                    left:0;
+                    background: #000;
+                    padding: 20px;
+                    ul{
+                        width:100%;
+                        li{                           
+                            width:100%; 
+                            padding: 10px 0;
+                            a{
+                                color:#fff;
+                                font-size: 12px;
+                                &.on {
+                                    color: #d32b55;
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+
+    #main {
+        z-index: 2;
+        position: relative;
+        width:100%;
+        #section1 {
+            position: relative;
+            width:100%; 
+            &::before {
+                content:'';  /* 가상요소생성된다 */
+                display: block;  /* 블록요소로 지정 */
+                width: 100%;   /* 단위가 %(백분율)은 부모요소의 너비를 상속받는다 */
+                height: 100%;  /* 단위가 %(백분율)은 부모요소의 높이를 상속받는다 */
+                background: rgba(40,40,40, 0);
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 1;
+            }  
+            .slide-container {
+                width:100%; 
+                position: relative;
+                .slide-view {
+                    z-index: 1;
+                    position: relative;
+                    width:100%; 
+                    overflow: hidden; //한 화면만 보이게 한다.
+                    // 가상요소
+                    &::before {
+                        z-index: 2;
+                        content:'';  /* 가상요소생성된다 */
+                        display: block;  /* 블록요소로 지정 */
+                        width: 100%;   /* 단위가 %(백분율)은 부모요소의 너비를 상속받는다 */
+                        height: 100%;  /* 단위가 %(백분율)은 부모요소의 높이를 상속받는다 */
+                        background: rgba(40,40,40, 0.4);
+                        position: absolute;
+                        top: 0;
+                        left: 0;                
+                    }
+                    .slide-wrap {
+                        z-index: 1;
+                        position: relative;
+                        width: 100% * 5; 
+                        margin: 0 0 0 -100%;
+                        display: flex;
+                        // left: -100% * 0; // 슬라이드1
+                        // left: -100% * 1; // 슬라이드2
+                        // left: -100% * 2; // 슬라이드3
+                        .slide {
+                            width:100%;
+                            height: 100vh;
+                            background: url() no-repeat 50% 50%;
+                            background-size: cover;
+                            &.slide1 {background-image: url(../img/wedding-img1.jpg);}
+                            &.slide2 {background-image: url(../img/wedding-img2.jpg);}
+                            &.slide3 {background-image: url(../img/wedding-img3.jpg);}
+                        }
+                    }
+                }
+        
+                .page-btn-box {
+                    z-index: 2;
+                    position: absolute;
+                    bottom: 40px;
+                    left: 0;
+                    width:100%;
+                    text-align: center;
+                    a {
+                        display: inline-block;
+                        width:13px;
+                        height: 13px;
+                        background:rgba(255,255,255, 1);
+                        text-indent: -30000px;
+                        overflow: hidden;
+                        margin:0 7px;
+                        border-radius: 50%;
+                        &.on {
+                            background:rgba(250, 70, 90, 1);
+                        }
+                    }
+                }
+            }
+        
+            > ul {
+                user-select: none; 
+                text-align: center;z-index: 2;position: absolute; top:50%; left:50%;;margin: -83px 0 0 -153.5px;
+                > li {
+                    width:100%;
+                    > img {width:auto;}
+                    > hr {margin: 40px 0 20px 0; border:0;width: 100%;height: 4px;border-top: 1px solid rgb(133, 212, 192);border-bottom:1px solid rgb(133, 212, 192); }
+                    > h3 {color: rgb(255, 255, 255);font-size: 18px;font-weight: 500;padding: 0 0 5px 0;}
+                    > h2 {color: rgb(133, 212, 192);font-size: 24px;font-weight: 700;}
+                }
+            }
+            
+        }
+
+        #section2 {
+            width: 100%;
+            padding: 130px 0;
+            background: rgb(255,255,255);
+            overflow: hidden;
+            &.on {
+                .container {
+                    .gap {
+                        .content {
+                            .left {animation: sec2Ani1 1.2s ease-in-out both;}   
+                        }
+                    }
+                }
+            }
+            &.on {
+                .container {
+                    .gap {
+                        .content {
+                            .right {animation: sec2Ani2 1.6s ease-in-out both;}
+                        }
+                    }
+                }
+            }
+            .container {
+                width: 100%;
+                max-width: 1170px;
+                margin: 0 auto;
+               .gap {
+                    width:100%;
+                    .title {
+                        padding: 0 0 90px 0;text-align: center;
+                        h2 {
+                            color: #e15276;font-size: 24px;font-weight: 600;display: inline-block;
+                            &::before {content:'';display: inline-block;height: 1px;width:40px;background: rgb(133,212,192);margin: 0 20px 8px 0;}
+                            &::after  {content:'';display: inline-block;height: 1px;width:40px;background: rgb(133,212,192);margin: 0 0 8px 20px;}
+                        }
+                    }
+                    .content {
+                        display: flex;
+                        // 플렉스를 지정하면 줄바꿈이 없다 : 플렉스 흐름(flow) : row no-wrap                        
+                        .left {
+                            width:50%;display: flex;transform: translateY(1000px);opacity: 0;
+                            .img-box {
+                                width:50%;padding: 0 15px;
+                                img {width:100%;outline: 5px solid rgba(255,255,255,0.3);outline-offset: -17px;}
+                                span {
+                                    display: block;padding:30px 0 0 0;text-align: center;
+                                    a {
+                                        color:#333;margin: 0 10px;
+                                        i {font-size: 14px;}
+                                    }
+                                }
+                            }
+                            .txt-box {
+                                width:50%;padding: 0 10px;
+                                h3 {
+                                    color:rgb(133,212,192);font-size: 18px;line-height: 160%;width: 80%;position: relative;padding: 40px 0 0 0;
+                                    &:before {content:'“';font-size: 100px;color:rgb(133, 212, 192);position: absolute;top:20px;left:0;}
+                                }
+                                h4 {color:#626262;font-size: 13px;font-weight: 400;width: 80%;padding:15px 0 7px 0;}
+                                p {color:#626262;font-size: 13px;width: 80%;line-height: 165%;}
+                            }
+                        }
+                        .right {
+                            width:50%;display: flex;transform: translateY(1000px);opacity: 0;
+                            .img-box {
+                                width:50%;padding: 0 15px;
+                                img {
+                                    width:100%;outline: 5px solid rgba(255,255,255,0.3);outline-offset: -17px;
+                                }
+                                span {
+                                    display: block;padding:30px 0 0 0;text-align: center;
+                                    a {
+                                        color:#333;margin: 0 10px;
+                                        i {font-size: 14px;}
+                                    }
+                                }
+                            }
+                            .txt-box {
+                                width:50%;padding: 0 10px;
+                                h3 {
+                                    color:rgb(133,212,192);font-size: 18px;line-height: 160%;width: 80%;position: relative;padding: 40px 0 0 0;
+                                    &:before {content:'“';font-size: 100px;color:rgb(133, 212, 192);position: absolute;top:20px;left:0;}
+                                }
+                                h4 {color:#626262;font-size: 13px;font-weight: 400;width: 80%;padding:15px 0 7px 0;}
+                                p {color:#626262;font-size: 13px;width: 80%;line-height: 165%;}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // 섹션2 패럴럭스
+        @keyframes sec2Ani1 {
+            0% {transform: translateY(1000px);opacity: 0;}
+        100% {transform: translateY(   0px);opacity: 1;}
+        }
+        @keyframes sec2Ani2 {
+            0% {transform: translateY(1000px);opacity: 0;}
+        100% {transform: translateY(   0px);opacity: 1;}
+        }
+        /* 섹션3  */
+        #section3 {
+
+            position: relative;  // 자식요소중 앱솔루트(absolute)를 잡아두는 박스다 
+            width:100%;
+            height: 346px;
+            background: url(../img/wedding-img7.jpg) no-repeat 50% 50% fixed;
+            background-size: cover;
+            &::before {
+                z-index: 2;
+                content:'';
+                display: block;
+                position: absolute;
+                top:0;
+                left:0;
+                z-index: 1;
+                width: 100%;
+                height: 100%;
+                background: rgba(50,50,50, 0.45);
+            }
+            
+            .container {
+                z-index: 1;
+                position: relative;
+                width:100%;
+                max-width:1170px;
+                height: 100%;
+                margin: 0 auto;
+                .gap {
+        
+                    padding: 0 15px;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;  /* 수평 가운데 */
+                    align-items: center;      /* 수직 가운데 */
+                    .title {
+                        transform: scale(0);opacity: 0;
+                        text-align: center;
+                        h2 {
+                            color: #85d4c0;
+                            font-weight: 600;
+                            font-size: 24px;
+                        }
+                    }            
+                }
+            }
+            &.on {
+                .container {
+                    .gap {
+                        .title {
+                            animation: sec3Ani 3s ease-in-out both;
+                        }
+                    }
+                }
+            }
+        }
+
+        // 섹션3 패럴럭스
+        @keyframes sec3Ani {
+            0% {transform: scale(0);opacity: 0;} 
+            50% {transform: scale(10);           } 
+            100% {transform: scale(1);opacity: 1;} 
+        }
+
+                
+        ///////////////////////////////////////////////////////////////////////
+        // 섹션4  사스(sass) 중첩코딩 부모가 자식을 감싼다 
+        /////////
+
+        #section4 {
+            width:100%;
+            padding:130px 0;
+            border-bottom: 1px solid #ddd;
+            overflow: hidden;
+            .container{
+                width: 100%;
+                max-width: 1170px;
+                margin:0 auto;
+                .gap {
+                    width:100%;
+                    .title {
+                        width:100%;
+                        padding: 0 0 90px 0;
+                        text-align: center;
+                        h2 {
+                            display: inline-block;
+                            font-size: 24px;
+                            font-weight: 700;
+                            color: #e15276;   
+                            &::before {
+                                content:'';
+                                display: inline-block;
+                                width:40px;height: 1px;
+                                background: #85d4c0;
+                                margin: 0 20px 8px 0;
+                            }                      
+                            &::after {
+                                content:'';
+                                display: inline-block;
+                                width:40px;height: 1px;
+                                background: #85d4c0;
+                                margin: 0 0 8px 20px;
+                            }
+                        }
+
+                    }
+                    .content {
+                        width:100%;
+                        ul {
+                            width:100%;
+                            display: flex;
+                            li {
+                                width: 33.33333%;
+                                transform: translateY(1000px);
+                                opacity: 0;
+                                .col-gap {
+                                    padding: 0 15px;
+                                    .col-box {
+                                        padding: 65px 54px;
+                                        text-align: center;
+                                        outline: 5px solid #ddd;
+                                        outline-offset: -5px;
+                                        span {
+                                            i {
+                                                font-size: 60px;
+                                                color: #85d4c0;
+                                            }
+                                        }
+                                        h3 {
+                                            font-size: 15px;
+                                            padding: 20px 0 20px 0;
+                                            font-weight: 600;
+                                        }
+                                        hr {
+                                            width:100%;
+                                            border:0;
+                                            height: 1px;
+                                            background: #ccc;
+                                        }
+                                        h4 {
+                                            padding: 20px 0 10px 0;
+                                        }
+
+                                        h4,
+                                        h5 {
+                                            font-size: 13px;
+                                            font-weight: 500;
+                                            color:#929292;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &.on{
+                .container{
+                    .gap {
+                    .content {
+                        ul {
+                            li:nth-child(1){
+
+                            }
+                            li:nth-child(2){
+
+                            }
+                            li:nth-child(3){
+
+                            }
+                        }
+                    } 
+                    }
+                }
+            }
+        }
+
+        #section4.on .container .gap .content ul li:nth-child(1) {animation: sec4Ani1 1.2s ease-in-out both;}
+        #section4.on .container .gap .content ul li:nth-child(2) {animation: sec4Ani2 1.5s ease-in-out both;}
+        #section4.on .container .gap .content ul li:nth-child(3) {animation: sec4Ani3 1.8s ease-in-out both;}
+
+        // 패럴럭스
+        @keyframes sec4Ani1 {
+            0% {transform: translateY(1000px);opacity: 0;}
+            100% {transform: translateY(   0px);opacity: 1;}
+        }
+        @keyframes sec4Ani2 {
+            0% {transform: translateY(1000px);opacity: 0;}
+            100% {transform: translateY(   0px);opacity: 1;}
+        }
+        @keyframes sec4Ani3 {
+            0% {transform: translateY(1000px);opacity: 0;}
+            100% {transform: translateY(   0px);opacity: 1;}
+        }
+
+
+        // 섹션5 갤러리 폭 1170px
+        #section5 {
+            width:100%;
+            padding:130px 0;
+            border-bottom: 1px solid #ddd;
+            overflow: hidden;
+            .container{
+                width:100%;
+                max-width: 1181px;
+                margin:0 auto;
+                .gap {
+                    width:100%;
+                    .title {
+                        width:100%;
+                        padding: 0 0 90px 0;
+                        text-align: center;
+                        transform: translateY(1000px);
+                        opacity: 0;
+                        h2 {
+                            display: inline-block;
+                            font-size: 24px;
+                            font-weight: 700;
+                            color: #e15276;   
+                            &::before {
+                                content:'';
+                                display: inline-block;
+                                width:40px;height: 1px;
+                                background: #85d4c0;
+                                margin: 0 20px 8px 0;
+                            }                      
+                            &::after {
+                                content:'';
+                                display: inline-block;
+                                width:40px;height: 1px;
+                                background: #85d4c0;
+                                margin: 0 0 8px 20px;
+                            }
+                        }
+
+                    }
+
+                    // 콘텐츠
+                    .content {
+                        width:100%; //1181px
+                        overflow: hidden; // 1170px 오버부분 -11px 감춘다.
+                        transform: translateY(1000px);
+                        opacity: 0;
+                        ul {
+                            width:100%;  //1181px                    
+                            display: flex; 
+                            // 플렉스흐름 
+                            // flex-flow: row nowrap;//기본이 줄바꿈없음.
+                            flex-flow: row wrap; 
+                            li {
+                                width:25%;
+                                .col-gap {
+                                    margin: 5.5px;
+                                    overflow: hidden;
+                                    img {
+                                        width:100%;
+                                        transition: all 0.3s ease-in-out;
+                                        &:hover {
+                                            transform: scale(1.2);
+                                            opacity: 0.3;
+                                            cursor: url(../img/icon-zoom.png), auto;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+
+            &.on{
+                .container {
+                    .gap {
+                        .title {
+                            animation: sec5Ani1 1.3s ease-in-out both;
+                        }
+                        .content{
+                            animation: sec5Ani2 1.6s ease-in-out both;
+                        }
+                    }
+                }
+            }
+        }
+
+        @keyframes sec5Ani1 {
+            0% {transform: translateY(1000px);opacity: 0;}
+            100% {transform: translateY(   0px);opacity: 1;}
+        }
+
+        @keyframes sec5Ani2 {
+            0% {transform: translateY(1000px);opacity: 0;}
+        100% {transform: translateY(   0px);opacity: 1;}
+        }
+
+
+
+
+
+        // 섹션6 컨테이너 1170 문서폭(콘텐츠) 1140
+        // 박스높이 500 너비 50%
+        #section6 {
+            width:100%;
+            padding: 130px 0;
+            background: url(../img/wedding-img16.jpg) no-repeat 50% 50% fixed;
+            position: relative;
+            overflow: hidden;
+            &::before {
+                content:'';
+                display: block;
+                position: absolute;
+                z-index: 1;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(40,40,40, 0.7);
+            }
+            .container {
+                z-index: 2;
+                position: relative;
+                width: 100%;
+                max-width: 1170px;
+
+                margin: 0 auto;
+                .gap {
+                    width:100%;
+                    .content {
+                        width:100%;
+                        display: flex;
+                        .left-box {
+                            width:50%;
+                            height: 500px;
+                            transform: translateX(-1500px);
+                            opacity: 0;
+                            .col-gap {
+                                margin: 0 15px;
+                                height: 100%;
+                                width: auto;
+                                .col-box {
+                                    width:100%;
+                                    height:100%;
+                                    background:  url(../img/wedding-img17.jpg) no-repeat 50% 50%;
+                                    background-size: cover;
+                                    outline: 5px solid rgba(255,255,255, 0.2);
+                                    outline-offset: -20px;
+                                    text-align: center;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    h2 {
+                                        font-size: 28px;
+                                        color: #fff;
+                                        font-weight: 600;
+                                        width: 60%;
+                                        line-height: 130%;
+                                    }
+                                }
+                            }
+                        }
+                        .right-box {
+                            width:50%;
+                            height: 500px;
+                            transform: translateX(1500px);
+                            opacity: 0;
+                            .col-gap {
+                                margin: 0 15px;
+                                height: 100%;
+                                width: auto;
+                                .col-box {
+                                    width:100%;
+                                    height:100%;
+                                    background:#85d4c0;
+                                    outline: 5px solid rgba(255,255,255, 0.2);
+                                    outline-offset: -20px;
+                                    ul {
+                                        width:100%;
+                                        padding: 80px 60px;
+                                        transition: all 0.3s;
+                                        &.on {
+                                            padding: 60px 60px 0 60px;
+                                        }
+                                        li {
+                                            width:100%;
+                                            padding: 10px 0;
+                                            text-align: center;
+                                            &:nth-child(4){
+                                                display: flex;
+                                            }
+                                            &:last-child {
+                                                padding: 20px 0 0 0;
+                                            }
+                                            h2 {
+                                                text-align: center;
+                                                font-size: 24px;
+                                                color: #626262;
+                                                font-weight: 600;
+                                                padding: 0 0 30px 0;
+                                            }
+                                            div {
+                                                width:100%;
+                                                &.left {
+                                                    width:50%;
+                                                    padding: 0 10px 0 0;
+                                                }
+                                                &.right {
+                                                    width:50%;
+                                                    padding: 0 0 0 10px;
+                                                }
+                                                input {
+                                                    border-radius: 3px;
+                                                    width: 100%;
+                                                    height: 45px;
+                                                    padding: 0 15px;
+                                                    background: #fff;
+                                                    font-size: 13px;
+                                                    border: 0;
+                                                    outline: 0;
+                                                    &::placeholder {
+                                                        color: #999;
+                                                    }
+                                                }
+                                                select {
+                                                    border-radius: 3px;
+                                                    width:100%;
+                                                    height: 45px;
+                                                    padding: 0 15px;
+                                                    font-size: 13px;
+                                                    border: 0;
+                                                    outline: 0;
+                                                    color: #999;
+                                                    appearance: none; // 셀렉트박스 원래 모습 사용안함
+                                                    background: #fff url(../img/select-arrow.png) no-repeat 96% 50%;
+                                                }
+                                            }
+                                            button {
+                                                border-radius: 3px;
+                                                height: 45px;
+                                                padding: 0 20px;
+                                                border: 4px solid #000;
+                                                background: #000;
+                                                color: #fff;
+                                                font-size: 13px;
+                                                font-weight: 500;
+                                                transition: all 0.3s;
+                                                text-transform: uppercase;
+                                                cursor: pointer;
+                                                &:hover {
+                                                    background: transparent;
+                                                    color: #000;  
+                                                }
+                                            }
+
+                                            p {   
+                                                display: none;                                                
+                                                border: 2px solid #46b450;
+                                                padding: 10px 20px;
+                                                font-size: 13px;
+                                                color: #333;
+                                                font-family: 'Roboto';
+                                                transition: all 2s ease-in-out;
+                                                opacity: 0;
+                                                &.on{
+                                                    display: inline-block;
+                                                    opacity: 1;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.on{
+                .container {
+                .gap {
+                        .content{
+                            .left-box {
+                                animation: sec6Ani1 2.5s ease-in-out both;
+                            }
+                            .right-box {
+                                animation: sec6Ani2 2.5s ease-in-out both;
+                            }
+                        }
+                } 
+                }
+            }
+        }
+
+        @keyframes sec6Ani1 {
+            0% {transform: translateX(-1500px);opacity: 0;}
+            100% {transform: translateX(    0px);opacity: 1;}
+        }
+
+        @keyframes sec6Ani2 {
+            0% {transform: translateX( 1500px);opacity: 0;}
+            100% {transform: translateX(    0px);opacity: 1;}
+        }
+
+
+
+
+        // 섹션7 컨테이너 1170 문서폭(콘텐츠) 1140
+        #section7 {
+            width:100%;
+            padding: 130px 0;
+            overflow: hidden;
+            .container {
+                width: 100%;
+                max-width: 1170px;
+
+                margin: 0 auto;
+                .gap {
+                    margin: 0 15px;
+                    .title {
+                        padding: 0 0 90px 0;
+                        text-align: center;
+                        transform: translateY(1000px);
+                        opacity: 0;
+                        h2 {
+                            display: inline-block;
+                            font-size: 24px;
+                            font-weight: 600;
+                            color: #e15276;
+                            &::before {
+                                content:'';
+                                width: 40px;
+                                height: 1px;
+                                background: #85d4c0;
+                                display: inline-block;
+                                margin: 0 20px 8px 0;
+                            }
+                            &::after {
+                                content:'';
+                                width: 40px;
+                                height: 1px;
+                                background: #85d4c0;
+                                display: inline-block;
+                                margin: 0 0 8px 20px;
+                            }
+                        }
+                    }
+                    .content {
+                        .row1 {
+                            padding: 0 0 80px 0;
+                            text-align: center;
+                            transform: translateY(1000px);
+                            opacity: 0;    
+                            p {
+                                width:40%;
+                                margin: 0 auto;
+                                font-family: 'Roboto';
+                                line-height: 200%;
+                                font-size: 13px;
+                                color: #626262;
+                                letter-spacing: 0.3px;
+                            }
+                        }
+                        .row2 {
+                            width:100%;
+                            transform: translateY(1000px);
+                            opacity: 0;
+            
+                            ul {
+                                width: 80%;
+                                display: flex;
+                                flex-flow: row wrap;
+                                margin: 0 auto;
+                                li {
+                                    width: 25%;
+                                    text-align: center;
+                                    a {
+                                        img {
+                                            width: auto;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &.on{
+                .container {
+                    .gap {
+                        .title{
+                            animation: sec7Ani1 2.3s ease-in-out both;
+                        }
+                        .content {
+                            .row1{animation: sec7Ani2 2.6s ease-in-out both;}
+                            .row2{animation: sec7Ani3 2.9s ease-in-out both;}
+                        }
+                    }
+                }
+            }
+        }
+
+        // 섹션7 애니메이션
+        @keyframes sec7Ani1 {
+            0% {transform: translateY(1000px);opacity: 0;}
+            100% {transform: translateY(   0px);opacity: 1;}
+        }
+        @keyframes sec7Ani2 {
+            0% {transform: translateY(1000px);opacity: 0;}
+            100% {transform: translateY(   0px);opacity: 1;}
+        }
+        @keyframes sec7Ani3 {
+            0% {transform: translateY(1000px);opacity: 0;}
+            100% {transform: translateY(   0px);opacity: 1;}
+        }
+
+
+
+        #section8 {
+            padding: 130px 0;
+            width: 100%;
+            background: #f6f6f6;
+            overflow: hidden;
+            .container {
+                width:100%;
+                .gap {
+                    width:100%;
+                    padding: 0 0 0 15px;
+                    .title {
+                        padding: 0 0 90px 0;
+                        text-align: center;
+                        h2 {
+                            display: inline-block;
+                            font-size: 24px;
+                            font-weight: 600;
+                            color: #e15276;
+                            &::before {
+                                content:'';
+                                width: 40px;
+                                height: 1px;
+                                background: #85d4c0;
+                                display: inline-block;
+                                margin: 0 20px 8px 0;
+                            }
+                            &::after {
+                                content:'';
+                                width: 40px;
+                                height: 1px;
+                                background: #85d4c0;
+                                display: inline-block;
+                                margin: 0 0 8px 20px;
+                            }
+                        }
+                    }
+                    .content {
+                        width:100%;
+                        .slide-continer {
+                            width: 100%;
+                            transform: translateX(1500px);opacity: 0;
+                            .slide-view {
+                                width: 100%;
+                                overflow: hidden;
+                                .slide-wrap {
+                                    width: 125%;
+                                    display: flex;
+                                    flex-flow: row nowrap;
+                                    // 애니메이션 
+                                    // 우측에서 좌측으로 25% 부드럽게 이동한다
+                                    // 단 4초후 1초간이동 => 전체 시간은 5초
+                                    // 100% / 5 = 20% => 1초  키프레임 key frame
+                                    // 계산 1초당 백분율을 계산한다.
+                                    // animation: 애니메이션이름 시간 프레임끝정지(fill-mode) 횟수 인피니트(계속) ;
+                                    // animation: name duration timing-function delay iteration-count direction fill-mode;                            
+                                    // animation: slide-ani  5s infinite both;
+                                    animation: slide-ani  5s  both;
+                                    animation-delay: 1.5s;
+                                    .slide {
+                                        width: calc(100% / 5);
+                                        .col-gap {
+                                            margin: 0 15px 0 0;
+                                            figure {
+                                                width: 100%;
+                                                cursor: url(../img/icon-move.png), auto;
+                                                .img-box {
+                                                    width: 100%;
+                                                    position: relative;
+                                                    overflow: hidden;                                              
+                                                    &::before {
+                                                        content:'';
+                                                        display: block;
+                                                        z-index: 2;
+                                                        position: absolute;
+                                                        top: 0;
+                                                        left: 0;
+                                                        width:100%;
+                                                        height: 100%;
+                                                        background: rgba(0,0,0, 0);
+                                                        transition: all 0.3s;  
+                                                        cursor: pointer;
+                                                    }                                      
+                                                    img {
+                                                        position: relative;
+                                                        z-index: 1;
+                                                        width: 100%;
+                                                        transition: all 0.3s ease-in-out;
+                                                        cursor: pointer;
+                                                    }
+                                                    h4  {
+                                                        z-index: 3;
+                                                        position: absolute;
+                                                        right: 0;
+                                                        bottom: 0;
+                                                        width: 107.922px + 50px;
+                                                        height: 47px;
+                                                        background: #fff;
+                                                        font-size: 13px;
+                                                        font-weight: 600;
+                                                        color:#626262;
+                                                        display: flex;
+                                                        justify-content: center;
+                                                        align-items: center;
+                                                        
+                                                    }
+                                                }
+                                                figcaption {                                           
+                                                    width: 100%;
+                                                    padding: 25px;
+                                                    display: flex;
+                                                    h2 {
+                                                        font-size: 35px;
+                                                        color:#e15276;
+                                                        font-weight: 600;
+                                                        margin: 0 25px 0 0;
+                                                    }
+                                                    div {
+                                                        h3 {
+                                                            font-size: 15px;
+                                                            font-weight: 700;
+                                                            color:#626262;
+                                                            text-transform: uppercase;
+                                                        }
+                                                        p {
+                                                            font-size: 14px;
+                                                            color:#626262;
+                                                            line-height: 180%;
+                                                            padding: 15px 0;
+                                                            font-family: 'Roboto';
+                                                        }
+                                                        i {
+                                                            display: block;
+                                                            width: 35px;
+                                                            height: 4px;
+                                                            background: #85d4c0;
+                                                        }    
+                                                    }
+                                                }
+
+                                                &:hover {
+                                                    .img-box {
+                                                        &::before {
+                                                            background-color: rgba(0,0,0, 0.4);
+                                                        }
+                                                        img {
+                                                            transform: scale(1.15);
+                                                        }    
+                                                    }
+                                                }
+                                            } 
+                                        }
+                                    } 
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &.on {
+                .container{
+                    .gap {
+                        .content {
+                            .slide-continer {
+                                animation: sec8Ani 2.5s ease-in-out both;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // 섹션8 패럴럭스
+        @keyframes sec8Ani {
+            0% {transform: translateX(1500px);opacity: 0;}
+            100% {transform: translateX(   0px);opacity: 1;}
+        }
+
+
+
+        // 애니메이션 키프레임 이름 {}
+        // 트랜스폼: 이동, 크기, 회전, 비틀기 ...
+        // 100%의 너비를 5칸으로 나누어 20% 만큼 너비를 이동한다.
+        @keyframes slide-ani {
+            0% {transform: translateX(calc(-100% / 5 * 0));}
+            20% {transform: translateX(calc(-100% / 5 * 0));}
+            40% {transform: translateX(calc(-100% / 5 * 0));}
+            80% {transform: translateX(calc(-100% / 5 * 0));}
+            100% {transform: translateX(calc(-100% / 5 * 1));}
+        } 
+
+
+        #section9 {
+            width:100%;    
+            background: #fff;
+            padding: 130px 0;
+            overflow: hidden;
+            .container {
+                width: 100%;
+                max-width: 1170px;
+
+                margin: 0 auto;
+                .gap {
+                    width: 100%;
+                    .title {
+                        padding: 0 0 90px 0;
+                        text-align: center;
+                        h2 {
+                            display: inline-block;
+                            font-size: 24px;
+                            font-weight: 600;
+                            color: #e15276;
+                            &::before {
+                                content:'';
+                                width: 40px;
+                                height: 1px;
+                                background: #85d4c0;
+                                display: inline-block;
+                                margin: 0 20px 8px 0;
+                            }
+                            &::after {
+                                content:'';
+                                width: 40px;
+                                height: 1px;
+                                background: #85d4c0;
+                                display: inline-block;
+                                margin: 0 0 8px 20px;
+                            }
+                        }
+                    }
+                    .content {
+                        width: 100%;
+                        ul {
+                            width: 100%;
+                            display: flex;
+                            flex-flow: row wrap;
+                            li {
+                                width: calc(100% / 3);
+                                transform: translateY(1000px);opacity: 0;
+                                .col-gap {
+                                    margin: 0 15px;
+                                    figure {
+                                        width:100%;
+                                        img {
+                                            width:100%;
+                                            transition: all 0.3s ease-in-out;
+                                            &:hover {
+                                                filter: grayscale(1);
+                                            }
+                                        }
+                                        figcaption {
+                                            width:100%;
+                                            padding: 30px 0;
+                                            color:#626262;
+                                            > a {
+                                                padding:4px 15px 5px 10px;
+                                                background: #000;
+                                                color: rgba(255,255,255, 1);
+                                                font-size: 10px;
+                                                font-weight: 500;
+                                                transition: all 0.3s ease-in-out;
+                                                &:hover {
+                                                    color: rgba(255,255,255, 0.6);
+                                                }
+                                            }
+                                            h3 {
+                                                padding: 20px 0 20px 0;
+                                                font-weight: 600;
+                                                line-height: 140%;
+                                                a {
+                                                    color: #626262;
+                                                }
+                                            }
+                                            p {
+                                                padding: 0 0 25px 0;
+                                                line-height: 160%;
+                                            }
+                                            hr {
+                                                width: 100%;
+                                                height: 1px;
+                                                border: 0;
+                                                background: #ccc;
+                                            }
+                                            h6 {
+                                                padding: 25px 0 0 0;
+                                                font-size: 10px;
+                                                color:#ababab;
+                                                a {
+                                                    color:#626262;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &.on {
+                .container {
+                    .gap {
+                        .content {
+                            ul {
+                                li {
+                                    &:nth-child(1){animation: sec9Ani1 1.2s ease-in-out both;}
+                                    &:nth-child(2){animation: sec9Ani2 1.5s ease-in-out both;}
+                                    &:nth-child(3){animation: sec9Ani3 1.8s ease-in-out both;}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+        @keyframes sec9Ani1 {
+            0% {transform: translateY(1000px);opacity: 0;}
+            100% {transform: translateY(   0px);opacity: 1;}
+        }
+
+        @keyframes sec9Ani2{
+            0% {transform: translateY(1000px);opacity: 0;}
+            100% {transform: translateY(   0px);opacity: 1;}
+        }
+
+        @keyframes sec9Ani3 {
+            0% {transform: translateY(1000px);opacity: 0;}
+            100% {transform: translateY(   0px);opacity: 1;}
+        }
+
+
+        #section10 {
+            width:100%;
+            padding: 130px 0;
+            border-top: 1px solid #ddd;
+            .container {
+                width: 100%;
+                max-width: 1170px;
+
+                margin: 0 auto;
+                .gap {
+                    margin: 0 15px;
+                    .title {
+                        width:100%;
+                        padding: 0 0 90px 0;
+                        text-align: center;
+                        h2 {
+                            display: inline-block;
+                            font-size: 24px;
+                            font-weight: 600;
+                            color: #e15276;
+                            &::before {
+                                content:'';
+                                width: 40px;
+                                height: 1px;
+                                background: #85d4c0;
+                                display: inline-block;
+                                margin: 0 20px 8px 0;
+                            }
+                            &::after {
+                                content:'';
+                                width: 40px;
+                                height: 1px;
+                                background: #85d4c0;
+                                display: inline-block;
+                                margin: 0 0 8px 20px;
+                            }
+                        }
+                    }
+                    .content {
+                        width:100%;
+                        p {
+                            width: 100%;
+                            max-width: 456px;
+                            margin: 0 auto;
+                            font-size: 13px;
+                            color: #626262;
+                            line-height: 170%;
+                            font-family: 'Roboto';
+                            text-align: center;
+                            letter-spacing: 0.3px;
+                        }
+                    }
+                }
+            }
+        }
+
+
+        #section11 {width:100%;height: 500px;}
+        #section11 iframe {width: 100%; height: 100%;border:0;}
+
+    }  // main
+
+    #footer {
+        width:100%;
+        .container {
+            width: 100%;
+            max-width: 1170px;
+
+            margin: 0 auto;
+            .gap {
+                width: auto;
+                margin: 0 15px;
+                text-align: center;
+                .row1 {
+                    width:100%;
+                    padding: 60px 0;
+                    span {
+                        margin: 0 25px;
+                        a {
+                            color:#575757;                        
+                            i {
+                                font-size: 22px;
+                            }
+                        }
+                    }
+                }
+                .row2 {
+                    width:100%;
+                    padding: 30px 0;
+                    border-top: 1px solid #ddd;
+                    p {
+                        font-size: 11px;
+                        color:#626262;
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+    }
+
+    .go-top {
+        opacity: 0;
+        z-index: 4;
+        position: fixed;
+        right: 30px;
+        bottom: 50px;
+        display: block;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        overflow: hidden;
+        &.fade-in{ // 부드럽게 보이는 효과 애니메이션
+            animation: fadeIn 1s ease-in-out both;
+        }    
+        &.fade-out{ // 부드럽게 사라지는 효과 애니메이션
+            animation: fadeOut 1s ease-in-out both;
+        }
+
+        @keyframes fadeIn {
+            0% {opacity: 0;}
+            100% {opacity: 1;}
+        }
+        @keyframes fadeOut {
+            0% {opacity: 1;}
+            100% {opacity: 0;}
+        }
+
+        a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0, 0.8);
+            transition: all 0.3s;
+            color: rgba(255,255,255, 0.7);
+            i {
+                transform: translateY(-3px);
+                font-size: 30px;            
+            }
+            &:hover {
+                background: rgba(0,0,0, 1);
+                color: rgba(255,255,255, 1);
+            }
+        }
+    }
+
+    #modal {
+        display: none;
+        position: fixed;
+        top:0;
+        left:0;
+        width: 100%;
+        height: 100%;    
+        z-index: 5;
+        background: rgb(255,255,255, 1);
+        cursor: url(../img/icon-zoom-out.png), auto;
+        .container {
+            width: 100%;
+            height: 100%;
+            display: flex;            
+            .gap {
+                width: 100%;
+                max-width: 800px;
+                margin: auto;
+                .title {
+                    display: none;                    
+                }
+                .content{
+                    width: 100%;
+                    a {
+                        display: inline-block;
+                        width: 100%;                        
+                        img {
+                            width: 100%;  
+                        }
+                    }
+                }
+            }
+
+            .modal-close-btn {
+                display: flex;
+                position: absolute;
+                top:0;
+                right:0;
+                width:30px;
+                height:30px;
+                background: #000;
+                color:#fff;
+                align-items: center;
+                justify-content: center;
+                font-size: 20px;
+            }
+            .modal-prev-btn {
+                display: flex;
+                position: absolute;
+                top:50%;
+                margin-top:-34px;
+                left:20px;
+                color:#000;
+                align-items: center;
+                justify-content: center;
+                font-size: 48px;
+                font-weight: 700;
+                padding: 10px;
+            }
+            .modal-next-btn {
+                display: flex;
+                position: absolute;
+                top:50%;
+                margin-top:-34px;
+                right:20px;
+                color:#000;
+                align-items: center;
+                justify-content: center;
+                font-size: 48px;
+                font-weight: 700;
+                padding: 10px;
+            }
+        }
+    }
+
+
+} // wrap
+
+
+
+
+
+
+
+
+
+
+
+
